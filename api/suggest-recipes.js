@@ -1,7 +1,7 @@
 const axios = require('axios')
 const qs = require('querystring')
 
-const key = "b8c2b2f348ca45a4ad0ff7c49b8eea5e"
+const key = "40bd7f50e284483ab32c3e38eaf5cf63"
 
 async function recipeApiCall(groceries) {
   

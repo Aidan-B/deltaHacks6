@@ -3,51 +3,6 @@ import React, { Component, useState } from 'react';
 import styles from '../constants/styles.js'
 import { View, Text, ScrollView, Alert, Switch } from 'react-native';
 
-const Checkbox = props => (<input type="checkbox" {...props}/>)
-
-class Toggles extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      alcoholfree: false,
-      celeryfree: false,
-      crustaceanfree: false,
-      dairyfree: false,
-      eggfree: false,
-      fishfree: false,
-      fodmapfree: false,
-      glutenfree: false,
-      ketofriendly: false,
-      kidneyfriendly: false,
-      kosher: false,
-      lupinefree: false,
-      mustardfree: false,
-      lowfatabs: false,
-      Nooiladded: false,
-      lowsugar: false,
-      paleo: false,
-      peanutfree: false,
-      pecatarian: false,
-      porkfree: false,
-      redmeatfree: false,
-      sesamefree: false,
-      hellfishfree: false,
-      soyfree: false,
-      sugarconscious: false,
-      treenutfree: false,
-      vegan: false,
-      vegetarian: false,
-      wheatfree: false
-    }
-        
-    function Example() {
-      // Declare a new state variable, which we'll call "count"
-      const [alcoholfree, setCount] = useState(false);
-  }
-}
-
-
-
 class CardHead extends Component {
   render() {
     return(
@@ -99,8 +54,8 @@ const ALER = 1
 const RELI = 2
 
 export default class ProfileScreen extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         //Setting up global variable
         global.settings = [
             0, 0, 0, 0, 0,
