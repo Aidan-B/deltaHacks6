@@ -131,10 +131,6 @@ export default {
         width: "60%",
         paddingLeft: 10,
         marginTop: 10,
-        flex: 0,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'flex-start',
         backgroundColor: "#111122",
         borderRadius: 10,
     },
@@ -145,5 +141,12 @@ export default {
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'flex-start',
+    },
+    personalize: {
+        height: 100,
+        width: "90%",
+        marginTop: 10,
+        backgroundColor: "#023C69",
+        alignItems: 'center'
     },
 };

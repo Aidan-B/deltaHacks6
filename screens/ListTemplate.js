@@ -8,12 +8,13 @@ import {
     Alert,
 } from 'react-native';
 import styles from '../constants/styles.js'
+import { requestFood, checkItem } from '../api/foodrequest.js'
 import { Ionicons } from '@expo/vector-icons';
 
 export default class ListTemplate extends React.Component {
     state = {
-        food: ["Pumpkin", "Chocolate"],
-        alert: [0, 1],
+        food: [],
+        alert: [],
         text: "",
     }
 
@@ -22,12 +23,21 @@ export default class ListTemplate extends React.Component {
             <View style={{ alignItems: 'center' }}>
                 <View style={styles.searchContainer}>
                     {this.TextField()}
+                    <TouchableOpacity
+                        style={styles.personalize}
+                        onPress={() => { checkItems() }}
+                    >
+                        <Text style={styles.tabBarInfoText}>
+                            Personalize!
+                        </Text>
+                    </TouchableOpacity>
                     <Ionicons
                         name={Platform.OS === 'ios' ? 'ios-restaurant' : 'md-restaurant'}
                         size={65}
                         style={{ marginBottom: -3, paddingLeft: 20, paddingTop: 20, width: "20%" }}
                     />
                 </View>
+
                 {this.ItemList()}
             </View>
         );
@@ -60,6 +70,15 @@ export default class ListTemplate extends React.Component {
         }
         return ItemArray
     }
+
+    checkItems() {
+        food = this.state.food
+
+        for (let i = 0; i < food.length; i++) {
+            this.state.alert.push(checkItem(food[i], "VEGAN"))
+        }
+    }
+
     // UPDATE WHEN MESSAGE IS ENTERED
     update() {
         this.state.food.push(this.state.text)
@@ -86,9 +105,11 @@ class ListItem extends React.Component {
                     onSubmitEditing={value => this.props.editIndex(this.props.key, value) }
                 >
                     {this.props.children}
-                    {""}
+                    
                 </TextInput>
-                
+                <Text>
+                    {this.props.key}
+                </Text>
                 <Ionicons
                     name={Platform.OS === 'ios' ? 'ios-notifications-outline' : 'md-notifications-outline'}
                     size={65}
