@@ -135,7 +135,8 @@ export default class ListTemplate extends React.Component {
     }
     yieldRecipe() {
         getRecipes(this.state.food).then((result) => {
-            Alert.alert(result[0] + "\n|" + result[1][0])
+                                      
+            Alert.alert(result['0'].recipe_titles + " - " + result['0'].recipe_links[0])
         }).catch((result) => console.log(result.response.data));
         
     }

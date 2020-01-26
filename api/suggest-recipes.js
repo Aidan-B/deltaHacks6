@@ -1,9 +1,9 @@
 const axios = require('axios')
 const qs = require('querystring')
 
-const key = "40bd7f50e284483ab32c3e38eaf5cf63"
+const key = "2df20ab9b7ae40fcb3055f33c6848716"
 
-async function recipeApiCall(groceries) {
+export async function recipeApiCall(groceries) {
   
   try{
     const baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?"
@@ -22,7 +22,7 @@ async function recipeApiCall(groceries) {
 
 
 
-async function getRecipes(ingredient_list)
+export async function getRecipes(ingredient_list)
 {
   try {
     let response = await recipeApiCall(ingredient_list);
@@ -52,6 +52,9 @@ async function getRecipes(ingredient_list)
 ingredient_list = ["Vegan Bacon", "Whole Wheat Pasta", "Onions", "Butter", "Bananas", "Coke"]
 getRecipes(ingredient_list).then((result) => {
   //Do your stuff here!
-  console.log(result)
-
+  console.log(result['0'].recipe_titles)
+  console.log(result['0'].recipe_links[0])
+  
 }).catch((result) => console.log(result.response.data));
+
+
