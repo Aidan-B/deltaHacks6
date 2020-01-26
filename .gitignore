@@ -8,6 +8,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 .vs/*
+.vscode/*
 web-build/
 web-report/
 
