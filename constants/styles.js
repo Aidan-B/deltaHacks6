@@ -86,14 +86,14 @@ export default {
     },
     helpLinkText: {
         fontSize: 14,
-        color: '#2e78b7',
+        color: '#5CAA47',
     },
     addButton: {
         height: Dimensions.get('window').width * 0.25,
         width: "25%",
         marginTop: 10,
-        backgroundColor: "#427CA9",
-        borderColor: "#000000",
+        backgroundColor: "#5CAA47",
+        borderColor: "#5CAA47",
         borderWidth: 1,
         borderRadius: Dimensions.get('window').width * 0.25,
         alignItems: 'center',
@@ -103,7 +103,7 @@ export default {
         height: 100,
         width: "90%",
         marginTop: 10,
-        backgroundColor: "#023C69",
+        backgroundColor: "#5CAA47",
         alignItems: 'center'
     },
     listContainer: {
@@ -116,15 +116,20 @@ export default {
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         borderWidth: 1,
-        borderColor: "#000000",
-        backgroundColor: "#224C89",
+        borderColor: "#5CAA47",
+        backgroundColor: "#5CAA47",
         borderRadius: 3,
+        textAlignVertical: 'center',
+        justifyContent: 'center'
     },
     listItemText: {
         width: '80%',
         fontSize: 30,
+        fontWeight: 'bold',
         flex: 0,
-        color: '#8ea8f7',
+        color: '#B12264',
+        textAlign: 'left',
+        textAlignVertical: 'center'
     },
     searchBox: {
         height: 80,
@@ -149,7 +154,7 @@ export default {
         paddingTop: 30,
         marginLeft: 20,
         marginRight: 20,
-        backgroundColor: "#023C69",
+        backgroundColor: "#5CAA47",
         alignItems: 'center',
         borderRadius: 5,
     },

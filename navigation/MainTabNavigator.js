@@ -24,6 +24,7 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      barTintColor="#5CAA47"
       focused={focused}
       name={
         Platform.OS === 'ios'
