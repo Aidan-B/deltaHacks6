@@ -88,15 +88,8 @@ export default {
         fontSize: 14,
         color: '#2e78b7',
     },
-    listButton: {
-        height: 100,
-        width: "90%",
-        marginTop: 10,
-        backgroundColor: "#023C69",
-        alignItems: 'center'
-    },
     addButton: {
-        height: Dimensions.get('window').width*0.25,
+        height: Dimensions.get('window').width * 0.25,
         width: "25%",
         marginTop: 10,
         backgroundColor: "#427CA9",
@@ -106,15 +99,51 @@ export default {
         alignItems: 'center',
         justifyContent: 'center',
     },
-    listContainer: {
-        height: "20%",
+    listButton: {
+        height: 100,
         width: "90%",
         marginTop: 10,
-        flex: 1,
+        backgroundColor: "#023C69",
+        alignItems: 'center'
+    },
+    listContainer: {
+        height: 100,
+        width: "90%",
+        paddingLeft: 10,
+        marginTop: 10,
+        flex: 0,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        alignItems: 'flex-start', // if you want to fill rows left to right
+        alignItems: 'flex-start',
         borderWidth: 1,
         borderColor: "#000000",
-    }
+        backgroundColor: "#224C89",
+        borderRadius: 3,
+    },
+    listItemText: {
+        width: '60%',
+        fontSize: 30,
+        flex: 0,
+        color: '#8ea8f7',
+    },
+    searchBox: {
+        height: 80,
+        width: "60%",
+        paddingLeft: 10,
+        marginTop: 10,
+        flex: 0,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        backgroundColor: "#111122",
+        borderRadius: 10,
+    },
+    searchContainer: {
+        height: 90,
+        width: "90%",
+        flex: 0,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+    },
 };
