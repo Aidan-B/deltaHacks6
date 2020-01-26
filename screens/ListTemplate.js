@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from '../constants/styles.js'
 import { requestFood, checkItem } from '../api/foodrequest.js'
+import ProfileScreen from '../screens/ProfileScreen.js'
 import { Ionicons } from '@expo/vector-icons';
 
 export default class ListTemplate extends React.Component {
@@ -76,8 +77,9 @@ export default class ListTemplate extends React.Component {
     }
 
     checkItems() {
+        Alert.alert(ProfileScreen.state.user_settings)
         for (let i = 0; i < this.state.food.length; i++) {
-            //this.state.alert.push(checkItem(food[i], "VEGAN"))
+           checkItem(this.state.food[i], "VEGAN")
         }
     }
 
@@ -120,7 +122,7 @@ class ListItem extends React.Component {
                 </TouchableOpacity>
             </View>
         )
-    } // REMOVAL DOESNT WORK
+    }
 }
 
 /*              <Text>

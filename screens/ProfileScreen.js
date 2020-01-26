@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import { ExpoConfigView } from '@expo/samples';
 
 import styles from '../constants/styles.js'
-import { View, CheckBox, Text, Image, StyleSheet, ScrollView, Alert, Switch } from 'react-native';
+import { View, Text, ScrollView, Alert, Switch } from 'react-native';
 
 const Checkbox = props => (<input type="checkbox" {...props}/>)
 
@@ -57,6 +56,51 @@ const ALER = 1
 const RELI = 2
 
 export default class ProfileScreen extends Component {
+    constructor() {
+        super();
+        //Setting up global variable
+        global.settings = [
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0
+        ]
+
+        global.R_terms = [
+            "alcohol - free",
+            "celery - free",
+            "crustacean - free",
+            "dairy - free",
+            "egg - free",
+            "fish - free",
+            "fodmap - free",
+            "gluten - free",
+            "keto - friendly",
+            "kidney - friendly",
+            "kosher",
+            "lupine - free",
+            "mustard - free",
+            "low - fat - abs",
+            "No - oil - added",
+            "low - sugar",
+            "paleo",
+            "peanut - free",
+            "pecatarian",
+            "pork - free",
+            "red - meat - free",
+            "sesame - free",
+            "shellfish - free",
+            "soy - free",
+            "sugar - conscious",
+            "tree - nut - free",
+            "vegan",
+            "vegetarian",
+            "wheat - free",
+        ]
+    }
+
     state = {
         user_settings: [
             0, 0, 0, 0, 0,
@@ -71,58 +115,25 @@ export default class ProfileScreen extends Component {
     update(kID) {
         this.state.user_settings[kID] = !this.state.user_settings[kID]
         this.forceUpdate()
-        Alert.alert(this.R_terms[kID] + " has been changed to " + this.state.user_settings[kID])
+        global.settings[kID] = this.state.user_settings[kID]
     }
 
-    R_terms = [
-        "alcohol - free",
-        "celery - free",
-        "crustacean - free",
-        "dairy - free",
-        "egg - free",
-        "fish - free",
-        "fodmap - free",
-        "gluten - free",
-        "keto - friendly",
-        "kidney - friendly",
-        "kosher",
-        "lupine - free",
-        "mustard - free",
-        "low - fat - abs",
-        "No - oil - added",
-        "low - sugar",
-        "paleo",
-        "peanut - free",
-        "pecatarian",
-        "pork - free",
-        "red - meat - free",
-        "sesame - free",
-        "shellfish - free",
-        "soy - free",
-        "sugar - conscious",
-        "tree - nut - free",
-        "vegan",
-        "vegetarian",
-        "wheat - free",
-    ]
-
-
-    R_type = [ALER, ALER, ALER, ALER, ALER,
-        ALER, ALER, DIET, DIET, DIET,
+    R_type = [DIET, ALER, ALER, ALER, ALER,
+        ALER, DIET, DIET, DIET, DIET,
         RELI, ALER, ALER, DIET, DIET,
         DIET, DIET, ALER, DIET, ALER,
         DIET, ALER, ALER, ALER, DIET,
         ALER, DIET, DIET, ALER]
 
     R_names = [
-        "Alcohol",
+        "Alcohol Free",
         "Celery",
         "Crustacean",
         "Dairy",
         "Egg",
         
         "Fish",
-        "Fodmap",
+        "Fodmap (Low Carb)",
         "Gluten",
         "Keto",
         "Kidney Friendly",
