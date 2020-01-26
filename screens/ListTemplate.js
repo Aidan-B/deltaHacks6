@@ -9,14 +9,46 @@ import {
 } from 'react-native';
 import styles from '../constants/styles.js'
 import { requestFood, checkItem } from '../api/foodrequest.js'
-import ProfileScreen from '../screens/ProfileScreen.js'
 import { Ionicons } from '@expo/vector-icons';
+import { settings } from '../screens/ProfileScreen';
 
 export default class ListTemplate extends React.Component {
     state = {
         food: [],
         text: "",
     }
+
+    R_terms = [
+        "alcohol-free",
+        "celery-free",
+        "crustacean-free",
+        "dairy-free",
+        "egg-free",
+        "fish-free",
+        "fodmap-free",
+        "gluten-free",
+        "keto-friendly",
+        "kidney-friendly",
+        "kosher",
+        "lupine-free",
+        "mustard-free",
+        "low-fat-abs",
+        "No-oil-added",
+        "low-sugar",
+        "paleo",
+        "peanut-free",
+        "pecatarian",
+        "pork-free",
+        "red-meat-free",
+        "sesame-free",
+        "shellfish-free",
+        "soy-free",
+        "sugar-conscious",
+        "tree-nut-free",
+        "vegan",
+        "vegetarian",
+        "wheat-free",
+    ]
 
     render() {
         return (
@@ -77,9 +109,13 @@ export default class ListTemplate extends React.Component {
     }
 
     checkItems() {
-        Alert.alert(ProfileScreen.state.user_settings)
+        let restrictions = []
+        for (let i = 0; i < settings.length; i++)
+            if (settings[i])
+                restrictions.push(R_terms[i])
+        
         for (let i = 0; i < this.state.food.length; i++) {
-           checkItem(this.state.food[i], "VEGAN")
+            //checkItem(this.state.food[i], restrictions)
         }
     }
 

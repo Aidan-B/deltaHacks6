@@ -10,7 +10,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
-  default: {},
+    default: {},
 });
 
 const HomeStack = createStackNavigator(
@@ -56,7 +56,7 @@ const ProfileStack = createStackNavigator(
   {
     Profiles: ProfileScreen,
   },
-  config
+    config,
 );
 
 ProfileStack.navigationOptions = {
