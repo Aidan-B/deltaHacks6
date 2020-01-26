@@ -14,86 +14,77 @@ import {
     JSON
 } from 'react-native';
 import styles from '../constants/styles.js'
-import { ListTemplate } from './ListTemplate'
+import ListTemplate from './ListTemplate.js'
 
 
-export default function ListsScreen() {
-    var modalVisible = false;
-    var num_list = 4
-    var editing = false;
+export default class ListsScreen extends React.Component {
+    state = {
+        modalVisible: false,
+        num_list: 0,
+        editing: false,
+        current: 0,
+    };
 
-    if (!editing)
-        return (
-            <View style={{ alignItems: 'center' }}>
-                {createButtons(num_list)}
+    render() {
+        if (this.state.editing)
+            return <ListTemplate />
+        else
+            return (
+                <View style={styles.container}>
+                    <ScrollView
+                        style={styles.container}
+                        contentContainerStyle={styles.contentContainer}
+                    >
+                        {this.createButtons(this.state.num_list, this.state.current)}
 
+                        <TouchableOpacity
+                            onPress={() => { this.add() }}
+                            style={styles.addButton}
+                        >
+                            <Text
+                                style={{
+                                    fontSize: 80,
+                                    color: '#eef',
+                                }}
+                            >+</Text>
+                        </TouchableOpacity>
+                        <View style={{height: 100}}/>
+                    </ScrollView>
+                </View>
+            );
+    }
+
+    createButtons(num_list) {
+        let Barray = []
+
+        for (let i = 0; i < num_list; i++) {
+            Barray.push(
                 <TouchableOpacity
-                    onPress={() => { modalVisible = true; num_list += 1; add(num_list) }}
-                    style={styles.addButton}
+                    onPress={() => { this.state.current = i; this.state.editing = true; this.forceUpdate() }}
+                    style={styles.listButton}
+                    key={i}
                 >
                     <Text
                         style={{
-                            fontSize: 80,
-                            color: '#eef',
+                            fontSize: 40,
+                            color: '#eee',
                         }}
-                    >+</Text>
+                    >List {i + 1}</Text>
                 </TouchableOpacity>
-            </View>
-        );
-    else
-        return <ListTemplate />;
-}
-
-function createButtons(num_list) {
-    let Barray = []
-
-    for (let i = 0; i < num_list; i++) {
-        Barray.push(
-            <TouchableOpacity
-                onPress={() => _retrieveData("TASKS")}
-                style={styles.listButton}
-                key={i}
-            >
-                <Text
-                    style={{
-                        fontSize: 40,
-                        color: '#eee',
-                    }}
-                >List {i + 1}</Text>
-            </TouchableOpacity>
-        )
-    }
-    return Barray
-}
-
-// Button incrementing
-function add(num_list) {
-    var num_lists = _retrieveData("num");
-    _storeData("num", num_lists + 1)
-    Alert.alert("Buttons: " + num_list)
-}
-
-async function _storeData(key, data) {
-    try {
-        await AsyncStorage.setItem("@App:" + key, toString(data));
-    } catch (error) {
-        Alert.alert(error)
-    }
-};
-
-_retrieveData = async (key) => {
-    try {
-        const value = await AsyncStorage.getItem("@App:" + key);
-        if (value !== null) {
-            return parseInt(value)
+            )
         }
-    } catch (error) {
-        Alert.alert(error)
+        return Barray
     }
-};
+
+    // Button incrementing
+    add() {
+        this.setState(() => { this.state.num_list++ })
+        this.forceUpdate();
+    }
+} // END CLASS
 
 ListsScreen.navigationOptions = {
-  title: 'Your Lists',
+  title: 'Your List',
 };
 
 /*<Modal

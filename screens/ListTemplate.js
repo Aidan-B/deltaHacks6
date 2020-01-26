@@ -3,33 +3,68 @@ import {
     ScrollView,
     Text,
     TouchableOpacity,
-    Ionicons,
     View,
     TextInput,
     Image,
     Alert,
-    AsyncStorage,
-    Modal,
-    TouchableHighlight,
-    JSON
+    JSON,
 } from 'react-native';
 import styles from '../constants/styles.js'
 
+export default class ListTemplate extends React.Component {
+    state = {
+        food: [],
+    }
 
-export default function ListTemplate() {
-    return (
-        <View style={{ alignItems: 'center' }}>
-            <TouchableOpacity
-                onPress={() => { modalVisible = true; num_list += 1; add(num_list) }}
-                style={styles.addButton}
-            >
-                <Text
-                    style={{
-                        fontSize: 80,
-                        color: '#eef',
-                    }}
-                >+</Text>
-            </TouchableOpacity>
-        </View>    
-    );
+    render() {
+        return (
+            <View style={{ alignItems: 'center' }}>
+
+                
+                {this.TextField}
+
+                <TouchableOpacity
+                    onPress={() => { }}
+                    style={styles.listItem}
+                >
+                    <Text
+                        style={{
+                            fontSize: 40,
+                            color: '#eef',
+                        }}
+                    >Bread</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
+    TextField() {
+        const [value, onChangeText] = React.useState('Useless Placeholder');
+        return (
+            <TextInput
+                style={styles.searchBox}
+                onChangeText={text => onChangeText(text)}
+                value={value}
+                onEndEditing={value => { food[index] = value; index++; this.forceUpdate()}}
+
+            />
+        );
+    }
+
+
+    a_to_s() {
+        return null;
+    }
+}
+
+class ListItem extends React.Component {
+    render() {
+        return (
+            <View style={listContainer}>
+                <Text style={{ width: '50%' }}>
+                    {...this.props.children}
+                </Text>
+            </View>
+        )
+    }
 }

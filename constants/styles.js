@@ -14,6 +14,7 @@ export default {
     },
     contentContainer: {
         paddingTop: 30,
+        alignItems: 'center',
     },
     welcomeContainer: {
         alignItems: 'center',
