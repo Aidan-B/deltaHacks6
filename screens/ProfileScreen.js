@@ -14,17 +14,18 @@ class OptionCard extends Component {
   }
 }
 
-export default function ProfileScreen() {
-
-  return (
-    <View style={styles.container}>
-      <View style={{alignItems: "center"}}>
-        <OptionCard name='Working is hard' style={{backgroundColor: 'powderblue'}}></OptionCard>
-        <OptionCard name='Working is hard' style={{backgroundColor: 'skyblue'}}></OptionCard>
-        <OptionCard name='Working is hard' style={{backgroundColor: 'steelblue'}}></OptionCard>
-      </View>
-    </View>
-  );
+export default class ProfileScreen extends Component {
+    render() {
+      return (
+        <View style={styles.container}>
+          <View style={{alignItems: "center"}}>
+            <OptionCard name='Working is hard' style={{backgroundColor: 'powderblue'}}></OptionCard>
+            <OptionCard name='Working is hard' style={{backgroundColor: 'skyblue'}}></OptionCard>
+            <OptionCard name='Working is hard' style={{backgroundColor: 'steelblue'}}></OptionCard>
+          </View>
+        </View>
+      );
+    }
 }
 
 ProfileScreen.navigationOptions = {
