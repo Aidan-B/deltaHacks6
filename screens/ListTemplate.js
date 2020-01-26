@@ -6,6 +6,7 @@ import {
     View,
     TextInput,
     Alert,
+    Linking
 } from 'react-native';
 import styles from '../constants/styles.js'
 import { requestFood, getFood } from '../api/foodrequest.js'
@@ -159,8 +160,8 @@ export default class ListTemplate extends React.Component {
     // SHOW RECIPES
     yieldRecipe() {
         getRecipes(this.state.food).then((result) => {
-                                      
-            Alert.alert(result['0'].recipe_titles + " - " + result['0'].recipe_links[0])
+            Linking.openURL(result['0'].recipe_links[0])
+            //Alert.alert(result['0'].recipe_titles + " - " + result['0'].recipe_links[0])
         }).catch((result) => console.log(result.response.data));
         
     }

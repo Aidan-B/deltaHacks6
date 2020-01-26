@@ -8,6 +8,8 @@ import HomeScreen from '../screens/HomeScreen';
 import ListsScreen from '../screens/ListsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
+
+
 const config = Platform.select({
   web: { headerMode: 'screen' },
     default: {},
@@ -54,8 +56,8 @@ ListsStack.navigationOptions = {
 ListsStack.path = '';
 
 const ProfileStack = createStackNavigator(
-  {
-    Profiles: ProfileScreen,
+    {
+        Profiles: () => <ProfileScreen settings={[1]}/>,
   },
     config,
 );
@@ -70,7 +72,7 @@ ProfileStack.navigationOptions = {
 ProfileStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+    HomeStack,
   ListsStack,
   ProfileStack,
 });
@@ -78,3 +80,5 @@ const tabNavigator = createBottomTabNavigator({
 tabNavigator.path = '';
 
 export default tabNavigator;
+
+
