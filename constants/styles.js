@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+
 export default {
     container: {
         flex: 1,
@@ -12,6 +14,7 @@ export default {
     },
     contentContainer: {
         paddingTop: 30,
+        alignItems: 'center',
     },
     welcomeContainer: {
         alignItems: 'center',
@@ -83,6 +86,76 @@ export default {
     },
     helpLinkText: {
         fontSize: 14,
-        color: '#2e78b7',
+        color: '#5CAA47',
+    },
+    addButton: {
+        height: Dimensions.get('window').width * 0.25,
+        width: "25%",
+        marginTop: 10,
+        backgroundColor: "#5CAA47",
+        borderColor: "#5CAA47",
+        borderWidth: 1,
+        borderRadius: Dimensions.get('window').width * 0.25,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    listButton: {
+        height: 100,
+        width: "90%",
+        marginTop: 10,
+        backgroundColor: "#5CAA47",
+        alignItems: 'center'
+    },
+    listContainer: {
+        height: 100,
+        width: "90%",
+        paddingLeft: 10,
+        marginTop: 10,
+        flex: 0,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        borderWidth: 1,
+        borderColor: "#5CAA47",
+        backgroundColor: "#5CAA47",
+        borderRadius: 3,
+        textAlignVertical: 'center',
+        justifyContent: 'center'
+    },
+    listItemText: {
+        width: '80%',
+        fontSize: 30,
+        fontWeight: 'bold',
+        flex: 0,
+        color: '#B12264',
+        textAlign: 'left',
+        textAlignVertical: 'center'
+    },
+    searchBox: {
+        height: 80,
+        width: "50%",
+        paddingLeft: 10,
+        marginTop: 10,
+        backgroundColor: "#dddddd",
+        borderRadius: 10,
+    },
+    searchContainer: {
+        height: 90,
+        width: "90%",
+        flex: 0,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+    },
+    personalize: {
+        height: 80,
+        width: "30%",
+        marginTop: 10,
+        paddingTop: 30,
+        marginLeft: 20,
+        marginRight: 20,
+        backgroundColor: "#5CAA47",
+        alignItems: 'center',
+        borderRadius: 5,
     },
 };

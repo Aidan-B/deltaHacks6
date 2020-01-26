@@ -7,8 +7,11 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+.vs/*
+.vscode/*
 web-build/
 web-report/
+.vscode/
 
 # macOS
 .DS_Store

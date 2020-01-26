@@ -10,7 +10,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
-  default: {},
+    default: {},
 });
 
 const HomeStack = createStackNavigator(
@@ -24,6 +24,7 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      barTintColor="#5CAA47"
       focused={focused}
       name={
         Platform.OS === 'ios'
@@ -56,7 +57,7 @@ const ProfileStack = createStackNavigator(
   {
     Profiles: ProfileScreen,
   },
-  config
+    config,
 );
 
 ProfileStack.navigationOptions = {
