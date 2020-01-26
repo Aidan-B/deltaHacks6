@@ -26,32 +26,7 @@ export default class ListsScreen extends React.Component {
     };
 
     render() {
-        if (this.state.editing)
             return <ListTemplate back={this.handleEdit.bind(this)} />
-        else
-            return (
-                <View style={styles.container}>
-                    <ScrollView
-                        style={styles.container}
-                        contentContainerStyle={styles.contentContainer}
-                    >
-                        {this.createButtons(this.state.num_list, this.state.current)}
-
-                        <TouchableOpacity
-                            onPress={() => { this.add() }}
-                            style={styles.addButton}
-                        >
-                            <Text
-                                style={{
-                                    fontSize: 80,
-                                    color: '#eef',
-                                }}
-                            >+</Text>
-                        </TouchableOpacity>
-                        <View style={{height: 100}}/>
-                    </ScrollView>
-                </View>
-            );
     }
 
     createButtons(num_list) {

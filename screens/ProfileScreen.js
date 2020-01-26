@@ -1,9 +1,51 @@
-import React, {Component} from 'react';
+import React, { Component, useState } from 'react';
 
 import styles from '../constants/styles.js'
-import { View, Text, ScrollView, Switch } from 'react-native';
+import { View, Text, ScrollView, Alert, Switch } from 'react-native';
 
 const Checkbox = props => (<input type="checkbox" {...props}/>)
+
+class Toggles extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      alcoholfree: false,
+      celeryfree: false,
+      crustaceanfree: false,
+      dairyfree: false,
+      eggfree: false,
+      fishfree: false,
+      fodmapfree: false,
+      glutenfree: false,
+      ketofriendly: false,
+      kidneyfriendly: false,
+      kosher: false,
+      lupinefree: false,
+      mustardfree: false,
+      lowfatabs: false,
+      Nooiladded: false,
+      lowsugar: false,
+      paleo: false,
+      peanutfree: false,
+      pecatarian: false,
+      porkfree: false,
+      redmeatfree: false,
+      sesamefree: false,
+      hellfishfree: false,
+      soyfree: false,
+      sugarconscious: false,
+      treenutfree: false,
+      vegan: false,
+      vegetarian: false,
+      wheatfree: false
+    }
+        
+    function Example() {
+      // Declare a new state variable, which we'll call "count"
+      const [alcoholfree, setCount] = useState(false);
+  }
+}
+
 
 
 class CardHead extends Component {
@@ -45,6 +87,7 @@ class OptionCard extends Component {
                 value={this.state.val}
                 onValueChange={(value) => { this.pressBox() }}
                 
+                
         />
       </View>
     )
@@ -56,8 +99,10 @@ const ALER = 1
 const RELI = 2
 
 export default class ProfileScreen extends Component {
-    state = {
-        user_settings: [
+    constructor() {
+        super();
+        //Setting up global variable
+        global.settings = [
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
@@ -65,19 +110,63 @@ export default class ProfileScreen extends Component {
             0, 0, 0, 0, 0,
             0, 0, 0, 0
         ]
+
+        global.R_terms = [
+            "alcohol - free",
+            "celery - free",
+            "crustacean - free",
+            "dairy - free",
+            "egg - free",
+            "fish - free",
+            "fodmap - free",
+            "gluten - free",
+            "keto - friendly",
+            "kidney - friendly",
+            "kosher",
+            "lupine - free",
+            "mustard - free",
+            "low - fat - abs",
+            "No - oil - added",
+            "low - sugar",
+            "paleo",
+            "peanut - free",
+            "pecatarian",
+            "pork - free",
+            "red - meat - free",
+            "sesame - free",
+            "shellfish - free",
+            "soy - free",
+            "sugar - conscious",
+            "tree - nut - free",
+            "vegan",
+            "vegetarian",
+            "wheat - free",
+        ]
+    }
+
+    state = {
+        user_settings: [
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 
+            0, 0, 0, 0
+        ]
     }
 
     update(kID) {
         this.state.user_settings[kID] = !this.state.user_settings[kID]
         this.forceUpdate()
+        global.settings[kID] = this.state.user_settings[kID]
     }
 
-    R_type = [DIET, ALER, ALER, ALER,
-        ALER, ALER, DIET, DIET, DIET,
-        DIET, RELI, ALER, ALER, DIET,
-        DIET, DIET, DIET, ALER, DIET,
-        ALER, DIET, ALER, ALER, ALER,
-        DIET, ALER, DIET, DIET, ALER]
+    R_type = [DIET, ALER, ALER, ALER, ALER,
+        ALER, DIET, DIET, DIET, DIET,
+        RELI, ALER, ALER, DIET, DIET,
+        DIET, DIET, ALER, DIET, ALER,
+        DIET, ALER, ALER, ALER, DIET,
+        ALER, DIET, DIET, ALER]
 
     R_names = [
         "Alcohol Free",
@@ -88,7 +177,7 @@ export default class ProfileScreen extends Component {
         
         "Fish",
         "Fodmap (Low Carb)",
-        "Gluten Free",
+        "Gluten",
         "Keto",
         "Kidney Friendly",
 
@@ -101,7 +190,7 @@ export default class ProfileScreen extends Component {
         "Low Sugar",
         "Paleo",
         "Peanut",
-        "Pescatarian",
+        "Pecatarian",
         "Pork",
 
         "No Red Meat",
