@@ -56,47 +56,7 @@ const RELI = 2
 export default class ProfileScreen extends Component {
     constructor(props) {
         super(props);
-        //Setting up global variable
-        global.settings = [
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0
-        ]
-
-        global.R_terms = [
-            "alcohol - free",
-            "celery - free",
-            "crustacean - free",
-            "dairy - free",
-            "egg - free",
-            "fish - free",
-            "fodmap - free",
-            "gluten - free",
-            "keto - friendly",
-            "kidney - friendly",
-            "kosher",
-            "lupine - free",
-            "mustard - free",
-            "low - fat - abs",
-            "No - oil - added",
-            "low - sugar",
-            "paleo",
-            "peanut - free",
-            "pecatarian",
-            "pork - free",
-            "red - meat - free",
-            "sesame - free",
-            "shellfish - free",
-            "soy - free",
-            "sugar - conscious",
-            "tree - nut - free",
-            "vegan",
-            "vegetarian",
-            "wheat - free",
-        ]
+      
     }
 
     state = {
@@ -113,7 +73,7 @@ export default class ProfileScreen extends Component {
     update(kID) {
         this.state.user_settings[kID] = !this.state.user_settings[kID]
         this.forceUpdate()
-        global.settings[kID] = this.state.user_settings[kID]
+        Alert.alert(this.R_names[kID] + " has been set to " + this.state.user_settings[kID])
     }
 
     R_type = [DIET, ALER, ALER, ALER, ALER,
@@ -132,7 +92,7 @@ export default class ProfileScreen extends Component {
         
         "Fish",
         "Fodmap (Low Carb)",
-        "Gluten",
+        "Gluten Free",
         "Keto",
         "Kidney Friendly",
 
