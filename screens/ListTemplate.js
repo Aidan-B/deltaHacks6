@@ -45,6 +45,38 @@ const R_terms = [
     "wheat-free",
 ]
 
+let settings = [
+    0, // Alcohol Free              ALLERGY
+    0, // Celery Free               ALLERGY
+    0, // Crustacean Free           ALLERGY
+    0, // Dairy Free                ALLERGY
+    0, // Egg Free                  ALLERGY
+    0, // Fish Free                 ALLERGY
+    0, // Fodmap (Low Carb)                     DIET
+    0, // Gluten Free                           DIET
+    0, // Keto                                  DIET
+    0, // Kidney Friendly                       DIET
+    0, // Kosher                                            RELIGION
+    0, // Lupine                    ALLERGY
+    0, // Mustard Free              ALLERGY
+    0, // Low Fat                               DIET
+    0, // No Oil Added                          DIET
+    0, // Low Sugar                             DIET
+    0, // Paleo                                 DIET
+    0, // Peanut Free               ALLERGY
+    0, // Pescatarian                           DIET
+    0, // Pork Free                 ALLERGY
+    0, // No Red Meat                           DIET
+    0, // Sesame Free               ALLERGY
+    0, // Shellfish Free            ALLERGY
+    0, // Soy Free                  ALLERGY
+    0, // Sugar Conscious                       DIET
+    0, // Tree Nut Free             ALLERGY
+    0, // Vegan                                 DIET
+    1, // Vegetarian                            DIET
+    0, // Wheat free                ALLERGY
+]
+
 export default class ListTemplate extends React.Component {
     state = {
         food: [],
@@ -111,15 +143,6 @@ export default class ListTemplate extends React.Component {
     }
     // API CALL TO REPLACE ITEMS
     async checkItems() {
-        let settings = [
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 1, 0, 0
-        ]
-
         let restrictions = []
         for (let i = 0; i < settings.length; i++)
             if (settings[i])
@@ -133,6 +156,7 @@ export default class ListTemplate extends React.Component {
         }
         
     }
+    // SHOW RECIPES
     yieldRecipe() {
         getRecipes(this.state.food).then((result) => {
             Alert.alert(result[0] + "\n|" + result[1][0])
