@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from '../constants/styles.js'
 import { requestFood, getFood } from '../api/foodrequest.js'
+import { getRecipes } from '../api/suggest-recipes.js'
 import { Ionicons } from '@expo/vector-icons';
 //import { settings } from '../screens/ProfileScreen';
 
@@ -65,10 +66,10 @@ export default class ListTemplate extends React.Component {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() => { this.props.back() }}
+                        onPress={() => { this.yieldRecipe() }}
                     >
                         <Ionicons
-                            name={Platform.OS === 'ios' ? 'ios-arrow-round-back' : 'md-arrow-round-back'}
+                            name={Platform.OS === 'ios' ? 'ios-restaurant' : 'md-restaurant'}
                             size={40}
                             style={{ marginBottom: -3, paddingTop: 30 }}
                         />
@@ -100,6 +101,7 @@ export default class ListTemplate extends React.Component {
                 <ListItem
                     editIndex={this.editIndex.bind(this)}
                     rmIndex={this.rmIndex.bind(this)}
+                    key={i}
                     kID={i}>
                     {this.state.food[i]}
                 </ListItem>
@@ -124,10 +126,16 @@ export default class ListTemplate extends React.Component {
                 restrictions.push(R_terms[i])
         
         for (let i = 0; i < this.state.food.length; i++) {
-            getFood(this.state.food[i], restrictions).then((temp) => {
-                this.state.food[i] = temp[0]
+            getFood(this.state.food[i], restrictions).then((response) => {
+                this.state.food[i] = response[0]
                 this.forceUpdate()
             }).catch((response) => { console.log(response.response.data); return false });
+        }
+        
+    }
+    yieldRecipe() {
+        getRecipes(this.state.food).then(response) => {
+            Alert.alert(response['name'] + response['link']])
         }
         
     }
