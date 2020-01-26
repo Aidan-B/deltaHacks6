@@ -10,6 +10,7 @@ import {
     JSON,
 } from 'react-native';
 import styles from '../constants/styles.js'
+import { Ionicons } from '@expo/vector-icons';
 
 export default class ListTemplate extends React.Component {
     state = {
@@ -21,19 +22,16 @@ export default class ListTemplate extends React.Component {
             <View style={{ alignItems: 'center' }}>
 
                 
-                {this.TextField}
+                
 
-                <TouchableOpacity
-                    onPress={() => { }}
-                    style={styles.listItem}
-                >
-                    <Text
-                        style={{
-                            fontSize: 40,
-                            color: '#eef',
-                        }}
-                    >Bread</Text>
-                </TouchableOpacity>
+                <ListItem>
+                    Bread
+                </ListItem>
+
+                <ListItem>
+                    Ham
+                </ListItem>
+
             </View>
         );
     }
@@ -60,10 +58,16 @@ export default class ListTemplate extends React.Component {
 class ListItem extends React.Component {
     render() {
         return (
-            <View style={listContainer}>
+            <View style={styles.listContainer}>
                 <Text style={{ width: '50%' }}>
-                    {...this.props.children}
+                    {this.props.children}
                 </Text>
+                <Ionicons
+                    name={Platform.OS === 'ios' ? 'ios-notifications-outline' : 'md-notifications-outline'}
+                    size={30}
+                    style={{ marginBottom: -3 }}
+                    color={'0xf0f'}
+                />
             </View>
         )
     }

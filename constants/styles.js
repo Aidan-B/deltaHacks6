@@ -106,4 +106,15 @@ export default {
         alignItems: 'center',
         justifyContent: 'center',
     },
+    listContainer: {
+        height: "20%",
+        width: "90%",
+        marginTop: 10,
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start', // if you want to fill rows left to right
+        borderWidth: 1,
+        borderColor: "#000000",
+    }
 };
