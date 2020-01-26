@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Test2",
-    "slug": "Test2",
+    "name": "WhatToBuy",
+    "slug": "WhatToBuy",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
