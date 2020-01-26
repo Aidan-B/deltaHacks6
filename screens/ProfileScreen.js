@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { ExpoConfigView } from '@expo/samples';
 
 import styles from '../constants/styles.js'
-import { View, CheckBox, Text, Image, StyleSheet } from 'react-native';
+import { View, CheckBox, Text, Image, StyleSheet, ScrollView, Button } from 'react-native';
 
 const Checkbox = props => (<input type="checkbox" {...props}/>)
 
@@ -20,9 +20,25 @@ class CardHead extends Component {
 class OptionCard extends Component {
   render() {
     return(
-      <View style={{marginRight:10, alignSelf: 'flex-end', flexDirection: 'row', alignItems:"center"}}>
-        <Text style={{fontSize: 16, textAlign:"right", margin: 10}}>{this.props.name}</Text>
-        <CheckBox style={{margin:10}}></CheckBox>
+      <View 
+        style={{
+          marginRight:10,
+          alignSelf: 'flex-end',
+          flexDirection: 'row',
+          alignItems:"center"
+        }}
+      >
+        <Text style={{
+          fontSize: 16,
+          textAlign:"right",
+          margin: 10}}>{this.props.name}</Text>
+        <CheckBox 
+          style={{margin:10}} 
+          onValueChange={function(value) {
+            console.log(value); 
+            this.value = !value;
+          }}
+        ></CheckBox>
       </View>
     )
   }
@@ -32,12 +48,32 @@ export default class ProfileScreen extends Component {
     render() {
       return (
         <View style={styles.container}>
-          <View style={{alignItems: "center"}}>
-            <CardHead name="Diets"></CardHead>
-            <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
-            <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
-            <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
-          </View>
+          <ScrollView style={styles.ScrollView}>
+            <View style={{alignItems: "center"}}>
+              <CardHead name="Diets"></CardHead>
+              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
+              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
+              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
+            </View>
+            <View style={{alignItems: "center"}}>
+              <CardHead name="Diets"></CardHead>
+              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
+              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
+              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
+            </View>
+            <View style={{alignItems: "center"}}>
+              <CardHead name="Diets"></CardHead>
+              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
+              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
+              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
+            </View>
+            <View style={{alignItems: "center"}}>
+              <CardHead name="Diets"></CardHead>
+              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
+              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
+              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
+            </View>
+          </ScrollView>
         </View>
       );
     }
