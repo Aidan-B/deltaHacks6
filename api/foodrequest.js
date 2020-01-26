@@ -43,11 +43,11 @@ export function checkItem(foodName, healthLabel) {
         })
 
         .then(function (response) {
-            for (let i = 0; i < response.data.hint[0]['healthLabels'].length; i++) {
-                if (response.data['hint'][0]['healthLabels'][0] == healthLabel)
-                    exists = true;
-            }
-            return exists;
+            //for (let i = 0; i < response.data.hint[0]['healthLabels'].length; i++) {
+            //    if (response.data['hint'][0]['healthLabels'][0] == healthLabel)
+            //        exists = true;
+            //}
+            //return exists;
         })
         .catch(function (error) {
             console.log(error);

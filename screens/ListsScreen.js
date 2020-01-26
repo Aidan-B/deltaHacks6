@@ -27,7 +27,7 @@ export default class ListsScreen extends React.Component {
 
     render() {
         if (this.state.editing)
-            return <ListTemplate />
+            return <ListTemplate back={this.handleEdit.bind(this)} />
         else
             return (
                 <View style={styles.container}>
@@ -80,6 +80,11 @@ export default class ListsScreen extends React.Component {
     add() {
         this.setState(() => { this.state.num_list++ })
         this.forceUpdate();
+    }
+    // Bank Handler
+    handleEdit() {
+        this.state.editing = false
+        this.forceUpdate()
     }
 } // END CLASS
 

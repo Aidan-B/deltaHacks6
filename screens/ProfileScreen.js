@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { ExpoConfigView } from '@expo/samples';
 
 import styles from '../constants/styles.js'
-import { View, CheckBox, Text, Image, StyleSheet, ScrollView, Button } from 'react-native';
+import { View, CheckBox, Text, Image, StyleSheet, ScrollView, Alert, Switch } from 'react-native';
 
 const Checkbox = props => (<input type="checkbox" {...props}/>)
 
@@ -18,6 +18,15 @@ class CardHead extends Component {
 }
 
 class OptionCard extends Component {
+    state = {
+        val: 0,
+    }
+
+  pressBox() {
+    this.props.update(this.props.kID)
+    this.setState((prevState) => ({ val: !prevState.val }));
+  }
+    
   render() {
     return(
       <View 
@@ -32,50 +41,174 @@ class OptionCard extends Component {
           fontSize: 16,
           textAlign:"right",
           margin: 10}}>{this.props.name}</Text>
-        <CheckBox 
-          style={{margin:10}} 
-          onValueChange={function(value) {
-            console.log(value); 
-            this.value = !value;
-          }}
-        ></CheckBox>
+            <Switch
+                style={{ margin: 10 }}
+                value={this.state.val}
+                onValueChange={(value) => { this.pressBox() }}
+                
+        />
       </View>
     )
   }
 }
 
+const DIET = 0
+const ALER = 1
+const RELI = 2
+
 export default class ProfileScreen extends Component {
+    state = {
+        user_settings: [
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 
+            0, 0, 0, 0
+        ]
+    }
+
+    update(kID) {
+        this.state.user_settings[kID] = !this.state.user_settings[kID]
+        this.forceUpdate()
+        Alert.alert(this.R_terms[kID] + " has been changed to " + this.state.user_settings[kID])
+    }
+
+    R_terms = [
+        "alcohol - free",
+        "celery - free",
+        "crustacean - free",
+        "dairy - free",
+        "egg - free",
+        "fish - free",
+        "fodmap - free",
+        "gluten - free",
+        "keto - friendly",
+        "kidney - friendly",
+        "kosher",
+        "lupine - free",
+        "mustard - free",
+        "low - fat - abs",
+        "No - oil - added",
+        "low - sugar",
+        "paleo",
+        "peanut - free",
+        "pecatarian",
+        "pork - free",
+        "red - meat - free",
+        "sesame - free",
+        "shellfish - free",
+        "soy - free",
+        "sugar - conscious",
+        "tree - nut - free",
+        "vegan",
+        "vegetarian",
+        "wheat - free",
+    ]
+
+
+    R_type = [ALER, ALER, ALER, ALER, ALER,
+        ALER, ALER, DIET, DIET, DIET,
+        RELI, ALER, ALER, DIET, DIET,
+        DIET, DIET, ALER, DIET, ALER,
+        DIET, ALER, ALER, ALER, DIET,
+        ALER, DIET, DIET, ALER]
+
+    R_names = [
+        "Alcohol",
+        "Celery",
+        "Crustacean",
+        "Dairy",
+        "Egg",
+        
+        "Fish",
+        "Fodmap",
+        "Gluten",
+        "Keto",
+        "Kidney Friendly",
+
+        "Kosher",
+        "Lupine",
+        "Mustard",
+        "Low Fat",
+        "No Oil Added",
+
+        "Low Sugar",
+        "Paleo",
+        "Peanut",
+        "Pecatarian",
+        "Pork",
+
+        "No Red Meat",
+        "Sesame",
+        "Shellfish",
+        "Soy",
+        "Sugar Conscious",
+
+        "Tree Nut",
+        "Vegan",
+        "Vegetarian",
+        "Wheat"
+    ]
+
     render() {
       return (
         <View style={styles.container}>
           <ScrollView style={styles.ScrollView}>
             <View style={{alignItems: "center"}}>
               <CardHead name="Diets"></CardHead>
-              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
-              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
-              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
+                {this.Diets()}
             </View>
             <View style={{alignItems: "center"}}>
-              <CardHead name="Diets"></CardHead>
-              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
-              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
-              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
+              <CardHead name="Allergies"></CardHead>
+                {this.Allergies()}
             </View>
             <View style={{alignItems: "center"}}>
-              <CardHead name="Diets"></CardHead>
-              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
-              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
-              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
+              <CardHead name="Religious"></CardHead>
+                 <OptionCard 
+                        name='Kosher' 
+                        kID={10}
+                        update={this.update.bind(this)}>
+                 </OptionCard>
             </View>
-            <View style={{alignItems: "center"}}>
-              <CardHead name="Diets"></CardHead>
-              <OptionCard name='Vegan' style={{backgroundColor: 'powderblue'}}></OptionCard>
-              <OptionCard name='Vegetarian' style={{backgroundColor: 'skyblue'}}></OptionCard>
-              <OptionCard name='Gluten Free' style={{backgroundColor: 'steelblue'}}></OptionCard>
-            </View>
+            <View style={{height: 100}}/>
           </ScrollView>
         </View>
       );
+    }
+
+    Diets() {
+        let tagsArray = []
+
+        for (let i = 0; i < this.R_names.length; i++) {
+            if (this.R_type[i] == DIET) {
+                tagsArray.push(
+                    <OptionCard
+                        name={this.R_names[i]}
+                        kID={i}
+                        update={this.update.bind(this)}
+                    />
+                )
+            }
+        }
+        return tagsArray
+    }
+
+    Allergies() {
+        let tagsArray = []
+
+        for (let i = 0; i < this.R_names.length; i++) {
+            if (this.R_type[i] == ALER) {
+                tagsArray.push(
+                    <OptionCard
+                        name={this.R_names[i]}
+                        kID={i}
+                        update={this.update.bind(this)}
+                    />
+                )
+            }
+        }
+        return tagsArray
     }
 }
 

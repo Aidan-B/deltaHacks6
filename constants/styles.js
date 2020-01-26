@@ -121,17 +121,17 @@ export default {
         borderRadius: 3,
     },
     listItemText: {
-        width: '60%',
+        width: '80%',
         fontSize: 30,
         flex: 0,
         color: '#8ea8f7',
     },
     searchBox: {
         height: 80,
-        width: "60%",
+        width: "50%",
         paddingLeft: 10,
         marginTop: 10,
-        backgroundColor: "#111122",
+        backgroundColor: "#dddddd",
         borderRadius: 10,
     },
     searchContainer: {
@@ -143,10 +143,14 @@ export default {
         alignItems: 'flex-start',
     },
     personalize: {
-        height: 100,
-        width: "90%",
+        height: 80,
+        width: "30%",
         marginTop: 10,
+        paddingTop: 30,
+        marginLeft: 20,
+        marginRight: 20,
         backgroundColor: "#023C69",
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 5,
     },
 };
