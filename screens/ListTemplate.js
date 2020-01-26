@@ -14,7 +14,6 @@ import { Ionicons } from '@expo/vector-icons';
 export default class ListTemplate extends React.Component {
     state = {
         food: [],
-        alert: [],
         text: "",
     }
 
@@ -25,17 +24,22 @@ export default class ListTemplate extends React.Component {
                     {this.TextField()}
                     <TouchableOpacity
                         style={styles.personalize}
-                        onPress={() => { checkItems() }}
+                        onPress={() => { this.checkItems() }}
                     >
                         <Text style={styles.tabBarInfoText}>
                             Personalize!
                         </Text>
                     </TouchableOpacity>
-                    <Ionicons
-                        name={Platform.OS === 'ios' ? 'ios-restaurant' : 'md-restaurant'}
-                        size={65}
-                        style={{ marginBottom: -3, paddingLeft: 20, paddingTop: 20, width: "20%" }}
-                    />
+
+                    <TouchableOpacity
+                        onPress={() => { this.props.back() }}
+                    >
+                        <Ionicons
+                            name={Platform.OS === 'ios' ? 'ios-arrow-round-back' : 'md-arrow-round-back'}
+                            size={40}
+                            style={{ marginBottom: -3, paddingTop: 30 }}
+                        />
+                    </TouchableOpacity>
                 </View>
 
                 {this.ItemList()}
@@ -63,7 +67,7 @@ export default class ListTemplate extends React.Component {
                 <ListItem
                     editIndex={this.editIndex.bind(this)}
                     rmIndex={this.rmIndex.bind(this)}
-                    key={i}>
+                    kID={i}>
                     {this.state.food[i]}
                 </ListItem>
             )
@@ -72,10 +76,8 @@ export default class ListTemplate extends React.Component {
     }
 
     checkItems() {
-        food = this.state.food
-
-        for (let i = 0; i < food.length; i++) {
-            this.state.alert.push(checkItem(food[i], "VEGAN"))
+        for (let i = 0; i < this.state.food.length; i++) {
+            //this.state.alert.push(checkItem(food[i], "VEGAN"))
         }
     }
 
@@ -86,12 +88,12 @@ export default class ListTemplate extends React.Component {
         this.forceUpdate()
     }
     // Passing state from child to parent
-    editIndex(key, value) {
-        this.state.food[key] = value
+    editIndex(kID, value) {
+        this.state.food[kID] = value
         this.forceUpdate()
     }
-    rmIndex(key) {
-        this.state.food.splice(key, 1)
+    rmIndex(kID) {
+        this.state.food.splice(kID, 1)
         this.forceUpdate()
     }
 }
@@ -102,21 +104,13 @@ class ListItem extends React.Component {
             <View style={styles.listContainer}>
                 <TextInput
                     style={styles.listItemText}
-                    onSubmitEditing={value => this.props.editIndex(this.props.key, value) }
+                    onSubmitEditing={value => this.props.editIndex(this.props.kID, value) }
                 >
-                    {this.props.children}
-                    
+                    {this.props.children}  
                 </TextInput>
-                <Text>
-                    {this.props.key}
-                </Text>
-                <Ionicons
-                    name={Platform.OS === 'ios' ? 'ios-notifications-outline' : 'md-notifications-outline'}
-                    size={65}
-                    style={{ marginBottom: -3, paddingTop: 18, paddingRight: "10%" }}
-                />
+                
                 <TouchableOpacity
-                    onPress={() => this.props.rmIndex(this.props.key)}
+                    onPress={() => { this.props.rmIndex(this.props.kID) }}
                 >
                      <Ionicons
                         name={Platform.OS === 'ios' ? 'ios-close-circle' : 'md-close-circle'}
@@ -126,5 +120,20 @@ class ListItem extends React.Component {
                 </TouchableOpacity>
             </View>
         )
-    }
+    } // REMOVAL DOESNT WORK
 }
+
+/*              <Text>
+                    {this.props.key}
+                </Text>
+                <Ionicons
+                    name={Platform.OS === 'ios' ? 'ios-notifications-outline' : 'md-notifications-outline'}
+                    size={65}
+                    style={{ marginBottom: -3, paddingTop: 18, paddingRight: "10%" }}
+                />
+                <Ionicons
+                    name={Platform.OS === 'ios' ? 'ios-restaurant' : 'md-restaurant'}
+                    size={65}
+                    style={{ marginBottom: -3, paddingLeft: 20, paddingTop: 20, width: "20%" }}
+                />
+*/

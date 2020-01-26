@@ -30,8 +30,9 @@ export default function HomeScreen() {
 
 
         <View style={styles.getStartedContainer}>
-                  <Text style={styles.getStartedText}>Welcome!
-                      </Text>
+                  <Text style={styles.getStartedText}>
+                      {"\n"}Welcome!{"\n"}
+                   </Text>
 
           <Text style={styles.getStartedText}>
             Seems like you would like to eat cheaper, healthier, 
