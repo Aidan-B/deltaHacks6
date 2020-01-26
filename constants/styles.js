@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+
 export default {
     container: {
         flex: 1,
@@ -84,5 +86,23 @@ export default {
     helpLinkText: {
         fontSize: 14,
         color: '#2e78b7',
+    },
+    listButton: {
+        height: 100,
+        width: "90%",
+        marginTop: 10,
+        backgroundColor: "#023C69",
+        alignItems: 'center'
+    },
+    addButton: {
+        height: Dimensions.get('window').width*0.25,
+        width: "25%",
+        marginTop: 10,
+        backgroundColor: "#427CA9",
+        borderColor: "#000000",
+        borderWidth: 1,
+        borderRadius: Dimensions.get('window').width * 0.25,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 };

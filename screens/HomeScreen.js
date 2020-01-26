@@ -30,34 +30,21 @@ export default function HomeScreen() {
 
 
         <View style={styles.getStartedContainer}>
-          <Text style={styles.getStartedText}>Welcome!</Text>
+                  <Text style={styles.getStartedText}>Welcome!
+                      </Text>
 
           <Text style={styles.getStartedText}>
-            Seems like you would like to eat cheaper, healthier, and more environmentally sustainably. Great!
+            Seems like you would like to eat cheaper, healthier, 
+            and more environmentally sustainably. Great! {"\n"}Here's 
+            can how we can help:{"\n"}{"\n"}{"\n"}
+            1. Edit your profile to tell us how you would like to eat differently.{"\n"}{"\n"}
+            2. Create a grocery list as if you were not planning to change your diet.{"\n"}{"\n"}
+            3. See the changes we suggest and choose if you'd like to keep them!{"\n"}{"\n"}{"\n"}
+            Have fun!
+                    
           </Text>
         </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
       </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View>
     </View>
   );
 }
