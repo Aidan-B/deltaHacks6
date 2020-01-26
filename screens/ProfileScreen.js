@@ -1,14 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { ExpoConfigView } from '@expo/samples';
 
-export default function SettingsScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  return <ExpoConfigView />;
+import styles from '../constants/styles.js'
+import { View, CheckBox, Text, Image, StyleSheet } from 'react-native';
+
+class OptionCard extends Component {
+  render() {
+    return(
+      <View style={{height: 80}}>
+        <Text>{this.props.name}</Text>
+      </View>
+    )
+  }
 }
 
-SettingsScreen.navigationOptions = {
-  title: 'app.json',
+export default function ProfileScreen() {
+
+  return (
+    <View style={styles.container}>
+      <View style={{alignItems: "center"}}>
+        <OptionCard name='Working is hard' style={{backgroundColor: 'powderblue'}}></OptionCard>
+        <OptionCard name='Working is hard' style={{backgroundColor: 'skyblue'}}></OptionCard>
+        <OptionCard name='Working is hard' style={{backgroundColor: 'steelblue'}}></OptionCard>
+      </View>
+    </View>
+  );
+}
+
+ProfileScreen.navigationOptions = {
+  title: 'Your Profile',
 };
